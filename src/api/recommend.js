@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2017/9/18.
- */
 import jsonp from 'common/js/jsonp'
 import {commonParams, options} from './config'
 

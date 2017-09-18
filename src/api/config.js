@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2017/9/18.
- */
 export const commonParams = {
   g_tk: 1928093487,
   inCharset: 'utf-8',
