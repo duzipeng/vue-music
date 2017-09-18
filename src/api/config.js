@@ -2,7 +2,7 @@
  * Created by Administrator on 2017/9/18.
  */
 export const commonParams = {
-  g_tk: 5381,
+  g_tk: 1928093487,
   inCharset: 'utf-8',
   outCharset: 'utf-8',
   notice: 0,
