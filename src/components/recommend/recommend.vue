@@ -43,7 +43,7 @@
       },
       _getDiscList () {
         getDiscList().then((res) => {
-          console.log(res.data)
+          console.log(res)
         })
       }
     },

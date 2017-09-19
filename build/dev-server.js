@@ -34,7 +34,7 @@ apiRoutes.get('/getDiscList', function (req, res) {
   axios.get(url, {
     headers: {
       referer: 'https://c.y.qq.com/',
-      host: 'c.y.qq.com'
+      Authorization: 'c.y.qq.com'
     },
     params: res.query
   }).then((response) => {
