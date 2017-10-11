@@ -139,7 +139,6 @@
           }
         }
         // 当滚动到底部，且-newY大于最后一个元素的上限
-        console.log(listHeight)
         this.currentIndex = listHeight.length - 2
       },
       diff (newVal) {
