@@ -19,13 +19,15 @@ export function getDiscList () {
     platform: 'yqq',
     hostUin: 0,
     loginUin: 0,
+    g_tk: 1756265179,
     sin: 0,
     ein: 29,
     sortId: 5,
     needNewCode: 0,
     categoryId: 10000000,
     rnd: Math.random(),
-    format: 'json'
+    format: 'json',
+    picmid: 1
   })
 
   // return jsonp(url, data, options)
