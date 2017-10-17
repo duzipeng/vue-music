@@ -14,7 +14,6 @@ export function getRecommend () {
 
 export function getDiscList () {
   const url = '/api/getDiscList'
-
   const data = Object.assign({}, commonParams, {
     platform: 'yqq',
     hostUin: 0,
@@ -49,7 +48,6 @@ export function getSongList (disstid) {
     platform: 'yqq',
     loginUin: 0,
     hostUin: 0,
-    g_tk: 5381,
     format: 'json',
     needNewCode: 0
   })
