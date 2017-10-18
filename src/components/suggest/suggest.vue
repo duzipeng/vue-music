@@ -1,5 +1,5 @@
 <template>
-  <scroll class="suggest" :scrollData="result">
+  <scroll class="suggest" :scrollData="result" :pullup="pullup" @scrollToEnd="searchMore">
     <ul class="suggest-list">
       <li class="suggest-item" v-for="item in result">
         <div class="icon">
@@ -9,6 +9,7 @@
           <p class="text" v-html="getDisplayName(item)"></p>
         </div>
       </li>
+      <loading v-show="hasMore" title=""></loading>
     </ul>
   </scroll>
 </template>
@@ -18,14 +19,18 @@
   import {ERR_OK} from 'api/config'
   import {createSong} from 'common/js/song'
   import Scroll from 'base/scroll/scroll'
+  import Loading from 'base/loading/loading'
 
   const TYPE_SINGER = 'singer'
+  const perpage = 20
 
   export default {
     data () {
       return {
         page: 1,
-        result: []
+        result: [],
+        pullup: true,
+        hasMore: true
       }
     },
     props: {
@@ -40,10 +45,23 @@
     },
     methods: {
       search () {
-        search(this.query, this.page, this.showSinger).then((res) => {
+        this.hasMore = true
+        search(this.query, this.page, this.showSinger, perpage).then((res) => {
           if (res.code === ERR_OK) {
-            console.log(res.data)
             this.result = this._genResult(res.data)
+            this._checkMore(res.data)
+          }
+        })
+      },
+      searchMore () {
+        if (!this.hasMore) {
+          return
+        }
+        this.page++
+        search(this.query, this.page, this.showSinger, perpage).then((res) => {
+          if (res.code === ERR_OK) {
+            this.result = this.result.concat(this._genResult(res.data))
+            this._checkMore(res.data)
           }
         })
       },
@@ -59,6 +77,12 @@
           return item.singername
         } else {
           return `${item.name}-${item.singer}`
+        }
+      },
+      _checkMore (data) {
+        const song = data.song
+        if (!song.list.length || (song.curnum + song.curpage * perpage) >= song.totalnum) {
+          this.hasMore = false
         }
       },
       _genResult (data) {
@@ -87,7 +111,8 @@
       }
     },
     components: {
-      Scroll
+      Scroll,
+      Loading
     }
   }
 </script>
