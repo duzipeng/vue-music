@@ -39,7 +39,7 @@
   }
 </script>
 
-<style lang="stylus" scoped rel="stylesheet/stylus">
+<style lang="stylus" scoped rel="stylesheet/stylus" type="text/stylus">
   @import "~common/stylus/variable"
 
   .search-box
